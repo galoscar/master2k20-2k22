@@ -1,0 +1,179 @@
+/* Base */
+@import "buttons.css";
+@import "forms.css";
+
+/* Pages */
+@import "authentication.css";
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.margin-top-menu {
+    margin-top: 100px;
+}
+
+#movies-container, .recommended-movies {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.container {
+    width: 100%;
+    position: relative;
+    height: 400px;
+    background: maroon;
+}
+
+.container > div > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.back-card {
+    position: absolute;
+    top: 0;
+    background: black;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+    opacity: 0;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    gap: 6px;
+}
+
+.container:hover {
+    transform: scale(1.1);
+
+}
+
+.back-card:hover {
+    opacity: 1;
+    -webkit-transition: opacity .25s ease-in-out .0s;
+    transition: opacity .25s ease-in-out .0s;
+}
+
+.back-card > a {
+    font-weight: bold;
+    color: white
+}
+
+.movie-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.movie-container-single {
+    width: 90%;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px
+}
+
+.movie-info-single {
+    height: 100%;
+    width: auto;
+    margin-top: 30px;
+}
+
+.text-movie-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    gap: 7px;
+}
+
+.desc {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.single-review {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.account-container, .recommendations-container {
+    display: flex;
+    width: 50%;
+    margin: 100px auto 0;
+}
+
+.recommendations-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.account-info {
+    width: 100%;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+.btn-container {
+    display: flex;
+    gap: 15px;
+}
+
+.update-info, .rating-container {
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    border: 1px solid lightgrey;
+    padding: 7% 12%;
+    border-radius: 7px;
+    background: rgba(125, 125, 125, 0.1);
+    box-shadow: 0 3px 6px lightgrey;
+    display: flex;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+}
+
+.update-acc {
+    margin-top: 40px;
+}
+
+.comments-section {
+    max-height: 170px;
+    overflow: scroll;
+}
+
+.rating-container {
+    align-items: center;
+    width: auto;
+}
+
+.add-rating-container {
+    display: flex;
+    align-items: center;
+}
+
+.add-rating {
+    display: flex;
+}
+
+.score-title {
+    display: flex;
+    align-items: center;
+}
+
+.add-comment-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

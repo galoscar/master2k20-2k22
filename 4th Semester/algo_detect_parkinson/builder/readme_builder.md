@@ -1,0 +1,1 @@
+# `Diagnose Parkinson’s Disease by Voice Using Linear Regression in Python`
