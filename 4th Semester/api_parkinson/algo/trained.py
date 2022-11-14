@@ -263,7 +263,8 @@ class DatasetCreator:
                 ),
                 columns=PREDICTORS
             )
-            resp = self.trained_model.predict(to_predict)
+            resp = self.trained_model.predict_proba(to_predict)
+            import pdb;pdb.set_trace()
             resp = str(resp)
 
             return {
