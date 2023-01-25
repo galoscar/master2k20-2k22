@@ -35,13 +35,13 @@ class DatasetCreator:
     def __init__(self):
         # If we already have created the measurements and saved them to file, load them and skip the process of creating
         try:
-            parkinson = pd.read_csv("dataset/processed_results.csv")
+            parkinson = pd.read_csv("../dataset/processed_results.csv")
             self.measurements_prediction = parkinson
         except FileNotFoundError:
             self.measurements_prediction = None
 
         try:
-            model = joblib.load("dataset/trained_model.sav")
+            model = joblib.load("../dataset/trained_model.sav")
             self.trained_model = model
         except FileNotFoundError:
             self.trained_model = None
@@ -134,22 +134,22 @@ class DatasetCreator:
     def process_recs(self):
         start_time = time.time()
 
-        for wave_file in glob.glob("dataset/dataset_voices/spontaneous_dialogue/parkinson/*.wav"):
+        for wave_file in glob.glob("../dataset/dataset_voices/spontaneous_dialogue/parkinson/*.wav"):
             self.process(wave_file, PARKINSON)
         print("1. dataset/dataset_voices/spontaneous_dialogue/parkinson/ took", time.time() - start_time, " to load")
         start_time = time.time()
 
-        for wave_file in glob.glob("dataset/dataset_voices/read_text/parkinson/*.wav"):
+        for wave_file in glob.glob("../dataset/dataset_voices/read_text/parkinson/*.wav"):
             self.process(wave_file, PARKINSON)
         print("2. dataset/dataset_voices/read_text/parkinson/ took", time.time() - start_time, " to load")
         start_time = time.time()
 
-        for wave_file in glob.glob("dataset/dataset_voices/spontaneous_dialogue/healthy/*.wav"):
+        for wave_file in glob.glob("../dataset/dataset_voices/spontaneous_dialogue/healthy/*.wav"):
             self.process(wave_file, HEALTHY)
         print("3. dataset/dataset_voices/spontaneous_dialogue/healthy/ took", time.time() - start_time, " to load")
         start_time = time.time()
 
-        for wave_file in glob.glob("dataset/dataset_voices/read_text/healthy/*.wav"):
+        for wave_file in glob.glob("../dataset/dataset_voices/read_text/healthy/*.wav"):
             self.process(wave_file, HEALTHY)
         print("4. dataset/dataset_voices/read_text/healthy/ took", time.time() - start_time, " to load")
 
@@ -168,7 +168,7 @@ class DatasetCreator:
             ]
         )
 
-        pred.to_csv("dataset/processed_results.csv", index=False)
+        pred.to_csv("../dataset/processed_results.csv", index=False)
         self.measurements_prediction = pred
 
     @staticmethod
@@ -245,7 +245,7 @@ class DatasetCreator:
         print('train accuracy =', train_score)
         print('test accuracy =', test_score)
 
-        joblib.dump(logistic, "dataset/trained_model.sav")
+        joblib.dump(logistic, "../dataset/trained_model.sav")
         self.trained_model = logistic
 
     def predict(self, wav_path = None):
@@ -264,7 +264,6 @@ class DatasetCreator:
                 columns=PREDICTORS
             )
             resp = self.trained_model.predict(to_predict)
-            import pdb;pdb.set_trace()
             resp = str(resp)
 
             return {
@@ -280,6 +279,6 @@ class DatasetCreator:
 
 
 dataSet = DatasetCreator()
-response = dataSet.predict(wav_path="dataset/test_oscar3.wav")
+response = dataSet.predict(wav_path="../dataset/test_oscar3.wav")
 print(response['success'])
 print(response['data'])
